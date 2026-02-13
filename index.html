@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Valentine 💝</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', 'Comic Sans MS', cursive;
+    background: linear-gradient(180deg, #ffe0f0, #ffb3d9, #ff9fcd);
+    overflow: hidden;
+    color: #a00055;
+  }
+
+  .screen {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 2.6rem;
+    text-shadow: 0 6px 18px rgba(255, 20, 147, 0.4);
+  }
+
+  input {
+    padding: 14px 20px;
+    border-radius: 30px;
+    border: none;
+    font-size: 1rem;
+    text-align: center;
+    outline: none;
+    margin-top: 15px;
+  }
+
+  button {
+    background: linear-gradient(145deg, #ff69b4, #ff1493);
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 40px;
+    margin: 15px;
+    cursor: pointer;
+    box-shadow: 0 15px 35px rgba(255, 20, 147, 0.45);
+    transition: transform 0.2s ease;
+  }
+
+  button:hover {
+    transform: scale(1.08);
+  }
+
+  .hidden { display: none; }
+
+  .card {
+    background: rgba(255, 240, 248, 0.75);
+    backdrop-filter: blur(18px);
+    border-radius: 35px;
+    padding: 35px;
+    max-width: 720px;
+    box-shadow:
+      0 25px 60px rgba(255, 20, 147, 0.3),
+      inset 0 0 20px rgba(255,255,255,0.8);
+  }
+
+  .kiss { font-size: 4rem; }
+  .doodle { font-size: 3.2rem; }
+
+  p {
+    font-size: 1.08rem;
+    line-height: 1.7;
+    white-space: pre-line;
+  }
+
+  .final {
+    font-size: 3rem;
+    color: #ff2f92;
+    text-shadow: 0 10px 30px rgba(255, 47, 146, 0.6);
+  }
+
+  .heart {
+    position: absolute;
+    top: -10px;
+    font-size: 22px;
+    animation: fall linear infinite;
+    color: #ff2f92;
+    opacity: 0.85;
+  }
+
+  @keyframes fall {
+    to {
+      transform: translateY(110vh) rotate(360deg);
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Romantic piano music (royalty-free) -->
+<audio id="bgMusic" loop>
+  <source src="https://cdn.pixabay.com/audio/2022/10/25/audio_4f2a36f1f2.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Screen 0 : Password -->
+<div class="screen" id="screen0">
+  <h1>💗 Only for my baby 💗</h1>
+  <input type="password" id="password" placeholder="Enter the secret">
+  <button onclick="checkPassword()">Unlock 💞</button>
+</div>
+
+<!-- Screen 1 -->
+<div class="screen hidden" id="screen1">
+  <h1>Are you my Valentine? 💕</h1>
+  <div>
+    <button onclick="startLove()">Yes 💗</button>
+    <button onclick="startLove()">Yes 💞</button>
+  </div>
+</div>
+
+<!-- Screen 2 -->
+<div class="screen hidden" id="screen2">
+  <div class="card">
+    <div class="kiss">💋💋💋</div>
+    <div class="doodle">🎀💕🥹💕🎀</div>
+
+    <h2>Happy Valentine’s My Love 💝</h2>
+
+    <p>
+Happy Valentines my Love🥹💝  
+I just want u to know how much you mean to me darling, how safe, loved, and calm u make my heart feel❤️‍🩹  
+I'm soo lucky to have a sweet little babyyy like u🙈🎀  
+Even from miles away, u are my comfort, my peace, and my sweetest place🥺  
+Thank you for choosing me, protecting me, and loving me the way you do❤️✨  
+I’m so proud to call you mine. Always yours. 💕
+    </p>
+
+    <button onclick="goFinal()">💞 One last thing</button>
+  </div>
+</div>
+
+<!-- Screen 3 -->
+<div class="screen hidden" id="screen3">
+  <div class="final">
+    Forever Yours 💕  
+    <div style="font-size:2rem;margin-top:15px;">♾️💗♾️</div>
+  </div>
+</div>
+
+<script>
+  function checkPassword() {
+    const pass = document.getElementById("password").value;
+    if (pass === "senesh27") {
+      document.getElementById("bgMusic").play();
+      document.getElementById("screen0").classList.add("hidden");
+      document.getElementById("screen1").classList.remove("hidden");
+    } else {
+      alert("Wrong password 😌");
+    }
+  }
+
+  function startLove() {
+    document.getElementById("screen1").classList.add("hidden");
+    document.getElementById("screen2").classList.remove("hidden");
+  }
+
+  function goFinal() {
+    document.getElementById("screen2").classList.add("hidden");
+    document.getElementById("screen3").classList.remove("hidden");
+  }
+
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 4) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 7000);
+  }
+
+  setInterval(createHeart, 230);
+</script>
+
+</body>
+</html>
